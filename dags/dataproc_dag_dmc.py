@@ -1,5 +1,4 @@
 from airflow import DAG
-from datetime import timedelta
 from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.operators.dataproc import  DataprocCreateClusterOperator
 from airflow.providers.google.cloud.operators.dataproc import DataprocSubmitJobOperator
@@ -46,7 +45,7 @@ with DAG(
     'dataproc-dmc',
     default_args=default_args,
     description='A simple DAG to create a Dataproc Workflow',
-    schedule_interval=None,
+    schedule_interval="@monthly",
     start_date=days_ago(1)
 ) as dag:
 
